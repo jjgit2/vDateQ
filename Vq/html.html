@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebf0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff4d6d;
+        }
+
+        .btn {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        #yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #no {
+            background-color: #ccc;
+            color: black;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .happy-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .happy-gif {
+            width: 400px;
+            height: auto;
+        }
+
+        .hearts {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .sad-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .sad-gif {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Can I be your Valentine?</h1>
+        <div class="btn">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
+    </div>
+
+    <div class="happy-container" id="happyContainer">
+        <img src="happycat.webp" class="happy-gif" alt="Happy Cat">
+        <div class="hearts">❤️❤️❤️</div>
+    </div>
+
+    <div class="sad-container" id="sadContainer">
+        <img src="sadcat.webp" class="sad-gif" alt="Sad Cat">
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        const yesBtn = document.getElementById('yes');
+        const noBtn = document.getElementById('no');
+        const happyContainer = document.getElementById('happyContainer');
+        const sadContainer = document.getElementById('sadContainer');
+
+        yesBtn.addEventListener('click', function () {
+            document.body.style.backgroundColor = "#ffcccc";
+            happyContainer.style.display = "flex";
+
+            const audio = new Audio('happy.mp3');
+            audio.play();
+
+            setTimeout(() => {
+                alert("YEEES hehe i am officially your date this valentines");
+            }, 5000);
+        });
+
+        noBtn.addEventListener('click', function () {
+            noClickCount++;
+            sadContainer.style.display = "block";
+            const sadAudio = new Audio('sad.mp3');
+            sadAudio.play();
+
+            const responses = [
+                "sure ka no? ", "pag-isipan mo ng mabuti", "aray no ulit", "grabe pang apat na reject mo na ah",
+                "lah nilima", "iiyak na ako", "imong gi buak akong gugma",
+                "kfine", "kiss kita", "say yes na please, give kita lots of kisses and 😏.. ",
+                "lah nag no paren, ok"
+            ];
+
+            if (noClickCount < responses.length) {
+                alert(responses[noClickCount]);
+            } else {
+                alert("oo na no na walk out na ako");
+                noBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
