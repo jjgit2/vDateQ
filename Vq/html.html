@@ -110,12 +110,12 @@
     </div>
 
     <div class="happy-container" id="happyContainer">
-        <img src="happycat.webp" class="happy-gif" alt="Happy Cat">
+        <img src="/Vq/happycat.webp" class="happy-gif" alt="Happy Cat">
         <div class="hearts">❤️❤️❤️</div>
     </div>
 
     <div class="sad-container" id="sadContainer">
-        <img src="sadcat.webp" class="sad-gif" alt="Sad Cat">
+        <img src="/Vq/sadcat.webp" class="sad-gif" alt="Sad Cat">
     </div>
 
     <script>
@@ -130,7 +130,7 @@
             document.body.style.backgroundColor = "#ffcccc";
             happyContainer.style.display = "flex";
 
-            const audio = new Audio('happy.mp3');
+            const audio = new Audio('/Vq/happy.mp3');
             audio.play();
 
             setTimeout(() => {
@@ -141,7 +141,7 @@
         noBtn.addEventListener('click', function () {
             noClickCount++;
             sadContainer.style.display = "block";
-            const sadAudio = new Audio('sad.mp3');
+            const sadAudio = new Audio('/Vq/sad.mp3');
             sadAudio.play();
 
             const responses = [
